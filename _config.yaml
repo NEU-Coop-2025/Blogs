@@ -1,8 +1,11 @@
-theme: jekyll-theme-minimal
+remote_theme: pages-theme/minimal@v0.2.0
 title: Instrumenting Mastodon for Privacy and Intervention.
 
 plugins:
   - jekyll-paginate
+
+gems:
+  - jekyll-remote-theme
 
 paginte: 5
 paginate_path: "/blog/page:num/"
