@@ -1,0 +1,12 @@
+theme: jekyll-theme-minimal
+title: Instrumenting Mastodon for Privacy and Intervention.
+
+plugins:
+  - jekyll-paginate
+
+paginte: 5
+paginate_path: "/blog/page:num/"
+
+excerpt_separator: <!--summary-->
+comments: true
+
