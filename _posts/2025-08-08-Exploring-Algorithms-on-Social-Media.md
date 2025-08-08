@@ -1,6 +1,7 @@
-# Exploring Algorithms on Social Media
-
-- TODO figure out header format
+---
+layout: post
+title: "Exploring Algorithms on Social Media"
+---
 
 When I was first starting to use social media, I started wondering how these platforms were able to give me exactly what I wanted to see, whether it's through TikTok or Douyin (the equivalent of TikTok in China). As I started scrolling through the videos, even though I didn't like any of the videos and I didn't follow any people on the platform, it still knew what I wanted to see just by analyzing how I was watching each video. That is truly alarming, and you might have the same thought.
 
@@ -24,8 +25,7 @@ With those data about you, they can use that data and train their model to eithe
 
 People have started to fight this. Companies like Mark Zuckerberg's Facebook (now Meta) have been sued.
 
-- TODO insert https://www.cjr.org/the_media_today/meta-facebook-lawsuit-algorithms-ethan-zuckerman.php
-- I am unsure of the precise way to cite information from online in blogs like these.
+"The complaint against Meta accuses the company of exploiting vulnerabilities in young people’s developing brains through algorithms “designed to capitalize on young users’ dopamine responses and create an addictive cycle of engagement.” [Hepburn, 2024]
 
 However, the amount that the company has been either regulated or fined by is not equivalent to the benefits that they are getting from doing this. In terms of the trade-off, it's clear to see why these corporations keep acting the same way.
 
@@ -33,13 +33,18 @@ Now, an alternative to this would be a social media platform like Mastodon, wher
 
 But the solution would be to get rid of algorithm forever, which would allow the users to be on social media less and the overall screen time to go down by a huge amount as well.
 
-- TODO show finding on less use of screen time beneficial for human.
-- https://tmb.apaopen.org/pub/yvcb5y06/release/2?utm_source=chatgpt.com
-- https://hms.harvard.edu/news/screen-time-brain
-- https://pmc.ncbi.nlm.nih.gov/articles/PMC11846175/
+"self-monitoring limited social media usage can be a practical intervention for improving psychological well-being" [Faulhaber, 2023]
+
+"The study highlights mental health improvements through smartphone screen time reduction." [Pieh, 2025]
 
 Imagine a world where algorithms didn't exist. Imagine a world where people would not be on their phones all day and actually come out to play and have fun. And I know that world existed before, but right now I am not seeing this. Maybe it's me being addicted to social media that makes me be on my phone for way too long, but most likely it's these big corporations that have ruined humanity for their own good.
 
 Now they do have their reasons for doing this. They gained so much money all these years and no one is there to stop them because no one's - not enough people see the reason to do so. I hope that people realize one day that this kind of phenomenon has to stop. People need to put down their phones, put down screen time, put down their laptops and actually come back to the real world. Not just for the sake of privacy, not just for the sake of getting rid of social media, but for our health and for a better life.
 
 All these times that we've been on social media they've taken way too much of our lives for just a quick giggle, and that's honestly sad. And this has to be changed fundamentally on a deeper level. Because these users don't stand a chance against the big corps. We won't be able to stand the convenience, we won't be able to stand all these easy-to-use, fun little apps on our phones that brings so much joy that it makes us forget how stressful a day of work has been. Otherwise, the world would've woken up already instead of being addicted to all these social media platforms. But that is not the case. Human self-control will not be able to withstand all these algorithms. The change has to come from somewhere else.
+
+Hepburn, Stephanie (2024) '43 States Suing Meta, Claiming Algorithms Fuel Youth Mental Health Crisis', *CrisisNow*. Available at: https://talk.crisisnow.com/43-states-suing-meta-claiming-algorithms-fuel-youth-mental-health-crisis/ (Accessed: 08 August 2025).
+
+Faulhaber, M.E., Lee, J.E. and Gentile, D.A. (2023) 'The Effect of Self-Monitoring Limited Social Media Use on Psychological Well-Being', *Technology, Mind, and Behavior*. Available at: https://tmb.apaopen.org/pub/yvcb5y06/release/2?utm_source=chatgpt.com (Accessed: 08 August 2025).
+
+Pieh, Christoph et al. (2025) 'Smartphone screen time reduction improves mental health: a randomized controlled trial.' *BMC medicine* vol. 23,1 107. 21 Feb. 2025. Available at: https://pmc.ncbi.nlm.nih.gov/articles/PMC11846175/ (Accessed: 08 August 2025).
