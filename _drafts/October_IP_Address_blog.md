@@ -1,6 +1,6 @@
 # The IP Address Dilemma
 
-TODO: add suitable subtitles
+## Introduction
 
 For decades, and for the forseeable years to come, the internet has ran on a simple exchange: provide your IP address, and you get to proceed/use the service. This exchange of information is essential for routing traffic, but it's also a foundational tool for security, moderation, and analytics.
 
@@ -14,28 +14,45 @@ In some cases, IP addresses might not be PII. [Tim Lachance](https://law.unh.edu
 
 When users are using IP address obfuscation technologies such as Onion Routing and VPNs, it undoubtedly weakens the relationship between IP addresses and the ability for them to identify personal info. Thus, one could argue that IP addresses, with the help of other techniques, simply cannot be considered to be PII under the fact that it is difficult to identify actual personal information from protected IP addresses. In practice, while these technologies are more accessible to regular people on the internet nowadays, it is still hard for some, for certain individuals to be able to protect their IP addresses and for IP addresses to be unable to identify themselves. For example, people in China generally have a very hard time bypassing the Great Firewall.
 
+## IP addresses in softwares
+
 Let's take a look at Google's argument on this. A software engineer at Google, Alma Whitten, has stated in a [Google Blog](https://publicpolicy.googleblog.com/2008/02/are-ip-addresses-personal.html) that "the IP addresses recorded by every website on the planet without additional information should not be considered personal data, because these websites usually cannot identify the human beings behind these number strings." Paul Ohm further explained this in his book [Broken Promises of Privacy](https://digitalcommons.law.scu.edu/cgi/viewcontent.cgi?article=1016&context=hightechevents) "websites like Google never store IP addresses devoid of context; instead, they store them connected to identity or behavior. Google probably knows from its log files, for example, that an IP address was used to access a particular email or calendar account, edit a particular word processing document, or send particular search queries to its search engine. By analyzing the connections woven throughout this mass of information, Google can draw some very accurate conclusions about the person linked to any particular IP address."
 
 These debates create a conflicting dilemma for companies and social media moderators, as IP addresses are essential to defenses against spam, fraud, and other illegal activites. While taking the introductory cybersecurity course at Northeastern, [Professor Justin Wang](https://www.khoury.northeastern.edu/people/hsiao-an-justin-wang/) talked about the secrets users provide to systems in order to gain access to their accounts, with one of them being IP addresses, or where you are. When a user attempts to commit spam or fraud, the IP address is used to prevent these actions (as much as possible). In the case of harassments, IP addresses are also used to prevent banned users from simply creating a new account and coming back to the platform unharmed.
 
 According to a [report](https://www.pewresearch.org/internet/2023/10/18/how-americans-view-data-privacy/) from Pew Research Center, in the United States, around two-thirds of the population do not understand what companies are doing with their personal data. Around three-quarters of the people believe that they have little to no control over what companies or the government do with their data. This is especially true in traditional social media platforms. Take Twitter for example. Everyone that uses the platform must agree to privacy policies that Twitter has set. For a long time, there were no great alternatives to Twitter. This means that if you want to engage with other people on a social platform, there is virtually no other choice besides agreeing to whatever Twitter says.
 
+## How Mastodon deals with IP addresses
+
 In Mastodon, the relationship between the users and the platform is quite different. Since Mastodon has multiple individual instances, often the users will have a stronger relationship and social ties with the administrators of that instance compared to the relationship between users of centralized social media with the company behind that centralized social media platform. According to [Erin Kissane and Darius Kazemi](https://fediverse-governance.github.io/#findings-report-governance-on-fediverse-microblogging-servers): "Fediverse moderation can offer humane, culturally attuned, context-sensitive moderation that far outperforms central platform offerings in its responsiveness to member needs and experiences." This allows the users to be a judge of how each instance is treating the user's data and gives them the freedom to choose which instance based on their preferences and standards. If one instance does not properly treat the user's data, the users will not choose that instance to store the data on.
 
 However, the issue with Mastodon being decentralized is that there are inevitably a large number of instance administrators who want to run their own instance but does not properly understand the privacy policies. In a paper written by [Emma Tosch, Cynthia Li, Luis Garcia, and Chris Martens](https://petsymposium.org/popets/2024/popets-2024-0138.pdf), where they have surveyed and examined how dozens of Mastodon instance administrators handle the instance, it appeared that multiple instance administrators either use the default privacy policies from Mastodon and does not care to modify them, or even worse, does not fully acknowledge what data is being collected from Mastodon. An example of this is where a respondent from the survey stated that “we never collect or share user data” in the privacy policy of their instance. This is simply not true, as the Mastodon software requires the collection and retention of certain user data like IP addresses in order for it to provide a usable experience.
 
-[//]: # (I decided to leave out any legal discussions for this blog)
+## Retaining IP addresses help secure software
 
-[//]: # (Looking at the legal laws on data retention of IP addresses, the state is not so great. In the European Union, the GDPR states that the collection of IP addresses must have a clear legal basis and must not hold it for longer than strictly necessary. In the United States, there are no federal data retention laws, and, currently, as far as my knowledge goes, only CCPA has certain laws on the retention of IP addresses. This lack of clarity in the privacy laws regarding IP addresses means that the retention policies of different platforms are all over the place, from services that delete IP addresses after 24 hours to those that potentially hold it for as long as their software runs.)
+As talked about above, retaining IP addresses is a crucial component to ensuring the security of websites. Take the example of a simple brute force attack, where we assume that the attacker is only using a single IP address. [example](https://owasp.org/www-community/controls/Blocking_Brute_Force_Attacks). The attacker will try to login as the admin and test hundreds of different passwords every minute. If the server logs the IP address of the users, then it would be able to track and count how many times an IP address has tried to login in a certain amount of time, and will be able to enforce rules to defend against the attacker like:
+- If an IP address tries to login 10 times within 1 minutes, block that IP address.
+- If an IP address tries to login into 5 different accounts within 24 hours, block that IP address.
+- If 2 different IP addresses tries to login into 1 account, enforce extra layer of security check.
 
-[//]: # (Obviously, brilliant researchers have been researching about the solutions of how we can solve the issue of IP addresses, and the most complex yet the most seemingly complete solution is homomorphic encryption. Homomorphic encryption is this new innovative technology that empowers zero-trust in any scenario. It encrypts the information before anyone knows what's behind the information. For example, in our case of IP addresses, the server does not gain knowledge of the user's IP address right away. Instead, the IP address is encrypted immediately. Therefore, this encrypted IP address can be shared, analyzed, and stored anywhere without the risk of it being exposed. This way, the server can store a list of blacklisted or fraudulent IP addresses without the risk of it being exposed. Even if it is exposed, it is already encrypted and will not harm anyone's privacy. When administrators try and identify whether a user is fraudulent or blacklisted, they only have to ask whether the encrypted IP address they get matches any of the encrypted IP addresses on their blacklist. If it does, they get an encrypted yes or no address, then they can act upon that result. In this whole process, no one — not the server, not the cloud, not the administrator, not the users — see the actual IP addresses of any users.)
+Nowadays, the attackers have gotten much more advanced with their ways of attacking servers, so simple rules and measures like the ones I mentioned are no where near enough to defend a real social media software. The underlying logic, however, stays the same, and preserves IP addresses as a strong first line of defense against cyber-attackers.
 
-TODO:
-- give an example of someone's privacy being violated due to their IP address being retained
-    - premilinary idea: Hong Kong protest and China government getting the IP addresses of the protestors
-- give a longer, more concrete example of how retaining IP addresses can help with the security of a website
+## Real-world examples of privacy violation
+
+Outside of Mastodon, the stakes are also high. Hong Kong, a special administration region of the People's Republic of China, has demonstrated the importance of privacy in the Hong Kong protest during 2019-2020. In this war, lives were taken, and so were the privacy of thousands and thousands of protesters, including 4000 phones that have been seized by the police, [source](https://www.businessinsider.com/hong-kong-police-seize-cell-phones-protesters-sparking-privacy-concerns-2020-1). People were basically naked on the internet.
+
+Lokman Tsui and Stuart Hargreaves from the Chinese University of Hong Kong has [showed](https://ijoc.org/index.php/ijoc/article/view/8232/2620) that IP addresses are **not** considered protected personal data, and therefore, this "means that police do not need a warrant to request, say, a list of subscribers who were in a certain place at a certain time", [source](https://www.technologyreview.com/2019/09/10/102646/the-new-battle-in-hong-kong-isnt-on-the-streets-its-in-the-apps/). Currently, there are no direct reports that confirms Beijing tracking and/or gaining access to these data, including IP addresses, to perform unrightful actions towards the protesters, but there are numerous reports that suspect these actions have been in the background for a long time, [source](https://www.cbc.ca/news/business/tiktok-hong-kong-1.6868141), [source](https://www.cisecurity.org/insights/blog/the-chinese-communist-party-ccp-a-quest-for-data-control), [source](https://globalvoices.org/2019/09/06/hong-kong-reddit-like-lihkg-faces-unprecedented-ddos-attacks-redirected-from-chinese-internet-companies/).
 
 ## Ways to protect IP addresses
+
+- Sources of methods:
+    - Northeastern courses
+        - Foundations of Cybersecurity
+        - Computer Systems
+        - Networks
+    - Blogs from the internet
+        - https://www.security.org/vpn/hide-your-ip-address/
+        - https://www.microsoft.com/en-us/microsoft-365-life-hacks/privacy-and-safety/why-and-how-to-hide-ip-address
 
 ### Protection from the origin
 | Method | How It Works |
@@ -74,3 +91,12 @@ TODO:
 - https://www.pewresearch.org/internet/2023/10/18/how-americans-view-data-privacy/
 - https://fediverse-governance.github.io/#findings-report-governance-on-fediverse-microblogging-servers
 - https://petsymposium.org/popets/2024/popets-2024-0138.pdf
+- https://owasp.org/www-community/controls/Blocking_Brute_Force_Attacks
+- https://www.businessinsider.com/hong-kong-police-seize-cell-phones-protesters-sparking-privacy-concerns-2020-1
+- https://ijoc.org/index.php/ijoc/article/view/8232/2620
+- https://www.technologyreview.com/2019/09/10/102646/the-new-battle-in-hong-kong-isnt-on-the-streets-its-in-the-apps/
+- https://www.cbc.ca/news/business/tiktok-hong-kong-1.6868141)
+- https://www.cisecurity.org/insights/blog/the-chinese-communist-party-ccp-a-quest-for-data-control
+- https://globalvoices.org/2019/09/06/hong-kong-reddit-like-lihkg-faces-unprecedented-ddos-attacks-redirected-from-chinese-internet-companies/
+- https://www.security.org/vpn/hide-your-ip-address/
+- https://www.microsoft.com/en-us/microsoft-365-life-hacks/privacy-and-safety/why-and-how-to-hide-ip-address
